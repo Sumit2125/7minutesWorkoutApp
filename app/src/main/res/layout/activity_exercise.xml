@@ -29,6 +29,8 @@
         app:layout_constraintStart_toStartOf="parent"
         />
 
+
+    
     <FrameLayout
         android:id="@+id/flRestView"
         android:layout_width="100dp"
