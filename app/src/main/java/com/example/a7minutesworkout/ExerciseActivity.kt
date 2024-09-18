@@ -77,7 +77,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 customDialog.show()
  }
 
-    private fun setupExerciseStatusRecyclerView(){
+    private fun setupExerciseStatusRecyclerView(){    //this function deals with layout and positioning of
+        // exercise number recycler view
         binding?.rvExerciseStatus?.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
 
@@ -87,10 +88,10 @@ customDialog.show()
     }
 
     private fun setupRestView(){
-
+//Each time we are in rest view this sound is played.
         try {
             val soundURI = Uri.parse(
-                "android.resource://com.example.a7_minutesworkoutapp/" + R.raw.press_start)
+                "android.resource://com.example.a7minutesworkout/" + R.raw.press_start)
              player = MediaPlayer.create(applicationContext, soundURI)
             player?.isLooping = false
             player?.start()
@@ -133,7 +134,9 @@ customDialog.show()
                 currentExercisePosition++
 
                 exerciseList!![currentExercisePosition].setIsSelected(true)
-                exerciseAdapter!!.notifyDataSetChanged()
+                exerciseAdapter!!.notifyDataSetChanged()   /*this notifies the recycler view about selected exercise number
+                and color changes accordingly.
+                */
                 setupExerciseView()
             }
         }.start()
@@ -197,6 +200,7 @@ customDialog.show()
             restProgress = 0
         }
 
+        //Text to speech feature is shutdown when activity is destroyed
         if (tts != null) {
             tts?.stop()
             tts?.shutdown()
@@ -210,6 +214,7 @@ customDialog.show()
         binding = null
     }
 
+   // This onInit function from texttospeechdemo.
     override fun onInit(status: Int) {
         if (status == TextToSpeech.SUCCESS) {
             // set US English as language for tts

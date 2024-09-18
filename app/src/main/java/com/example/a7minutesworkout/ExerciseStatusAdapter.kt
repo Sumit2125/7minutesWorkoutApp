@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a7minutesworkout.databinding.ItemExerciseStatusBinding
 
+//this adapter class act as data source for recycler views
 class ExerciseStatusAdapter(val items: ArrayList<ExerciseModel>):
     RecyclerView.Adapter<ExerciseStatusAdapter.ViewHolder>() {
 
@@ -22,7 +23,9 @@ class ExerciseStatusAdapter(val items: ArrayList<ExerciseModel>):
         val model: ExerciseModel = items[position]
         holder.tvItem.text = model.getId().toString()
 
-        when {
+        when {   /* this controls recycler view depending on the current excercise position, completed and left
+        color of exercise number changes accordingly.
+            */
             model.getIsSelected() -> {
                 holder.tvItem.background =
                     ContextCompat.getDrawable(
