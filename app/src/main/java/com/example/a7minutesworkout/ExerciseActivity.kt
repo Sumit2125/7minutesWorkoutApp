@@ -59,10 +59,12 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
 
     override fun onBackPressed(){
+        super.onBackPressed()
         customDialogForBackButton()
     }
 
  private fun customDialogForBackButton(){
+     //handling the case when back button is pressed during exercise
      val customDialog = Dialog(this)
      val dialogBinding = DialogCustomBackConfirmationBinding.inflate(layoutInflater)
      customDialog.setContentView(dialogBinding.root)

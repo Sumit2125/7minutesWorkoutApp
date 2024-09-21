@@ -25,6 +25,7 @@ class BMIActivity : AppCompatActivity() {
         binding = ActivityBmiBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
+        //handling the case of action bar when on create function is called
         setSupportActionBar(binding?.toolbarBmiActivity)
         if (supportActionBar != null) {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -36,6 +37,7 @@ class BMIActivity : AppCompatActivity() {
 
         makeVisibleMetricUnitsView()
 
+        //accessing the radio group units
         binding?.rgUnits?.setOnCheckedChangeListener{ _, checkedId: Int ->
             if(checkedId == R.id.rbMetricUnits){
                 makeVisibleMetricUnitsView()
@@ -115,6 +117,7 @@ class BMIActivity : AppCompatActivity() {
             bmiLabel = "Obese Class ||| (Very Severely obese)"
             bmiDescription = "OMG! You are in a very dangerous condition! Act now!"
         }
+
        val bmiValue = BigDecimal(bmi.toDouble())
            .setScale(2,RoundingMode.HALF_EVEN).toString()
 
